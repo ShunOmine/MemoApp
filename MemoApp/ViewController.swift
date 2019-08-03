@@ -13,6 +13,9 @@ class ViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var deleteButton: UIButton!
     
+    // AppDelegateを参照する為の定数。
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,15 +23,11 @@ class ViewController: UIViewController, UITextViewDelegate {
         // textViewがUITextViewDelegateを使えるようにします。
         textView.delegate = self
         
-         // AppDelegateを参照する為の定数。
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         // AppDelegateに定義したlastTextを参照し、textViewに格納する。
         textView.text = appDelegate.lastText
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        // AppDelegateを呼び出して変数に格納します。
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         // AppDelegateに記述した"lastText"に入力されている内容を格納します
         appDelegate.lastText = textView.text
     }
@@ -36,7 +35,6 @@ class ViewController: UIViewController, UITextViewDelegate {
     // ボタンをクリックするとテキストを削除
     @IBAction func deleteText(_ sender: Any) {
         textView.text = nil
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.lastText = nil
     }
 }
