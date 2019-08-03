@@ -36,6 +36,8 @@ class ViewController: UIViewController, UITextViewDelegate {
     // ボタンをクリックするとテキストを削除
     @IBAction func deleteText(_ sender: Any) {
         textView.text = nil
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.lastText = nil
     }
 }
 
