@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var deleteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,5 +33,9 @@ class ViewController: UIViewController, UITextViewDelegate {
         appDelegate.lastText = textView.text
     }
 
+    // ボタンをクリックするとテキストを削除
+    @IBAction func deleteText(_ sender: Any) {
+        textView.text = nil
+    }
 }
 
